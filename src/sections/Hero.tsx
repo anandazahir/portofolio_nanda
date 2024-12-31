@@ -2,7 +2,6 @@ import { useRef, useMemo } from "react";
 import { motion } from "framer-motion";
 import TextTransition from "../Animations/textBox";
 import RandomJapaneseText from "../Animations/RandomText";
-import SwitchTheme from "../Animations/Test";
 
 interface Style {
   top: number;

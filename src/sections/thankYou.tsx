@@ -1,47 +1,124 @@
-import ScrollableElement from "../Animations/UseSroll";
-import RunningText from "../Animations/RunningText";
+import { useRef, useMemo } from "react";
+import { motion } from "framer-motion";
+import TextTransition from "../Animations/textBox";
+import RandomJapaneseText from "../Animations/RandomText";
 
-function ThankYou() {
-  return (
-    <ScrollableElement className="text-white  w-full flex flex-col  mt-40  pl-8 pr-5 relative ">
-      <h1 className="text-2xl font-bold mb-6">Connect With Me</h1>
-      <div
-        className={`border-solid border-white border-[5px] relative p-5 flex rounded-lg flex-col w-full`}
-        id="contact"
-      >
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-          <div className="col-span-1 md:col-span-2">
-            <input
-              type="text"
-              placeholder="Full Name"
-              className="w-full px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div className="col-span-1 md:col-span-2">
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div className="col-span-1 md:col-span-2">
-            <textarea
-              placeholder="Your Message"
-              className="w-full px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-32 resize-none"
-            ></textarea>
-          </div>
-          <div className="col-span-1 md:col-span-2">
-            <button
-              type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 ease-in-out"
-            >
-              Send Message
-            </button>
-          </div>
-        </form>
-      </div>
-    </ScrollableElement>
-  );
+interface Style {
+  top: number;
+  left: number;
+  rotate: number;
 }
 
-export default ThankYou;
+const generateGridStyle = (
+  index: number,
+  rows: number,
+  cols: number
+): Style => {
+  const isMobile = window.innerWidth < 900;
+
+  let maxTop = isMobile ? 90 : 77;
+  const minTop = 15;
+  let maxLeft = isMobile ? 90 : 100;
+  if (window.innerHeight < 640) {
+    maxTop = 70;
+    maxLeft = 100;
+  }
+  const row = Math.floor(index / cols);
+  const col = index % cols;
+
+  const cellWidth = maxLeft / cols;
+  const cellHeight = (maxTop - minTop) / rows;
+
+  const top = minTop + row * cellHeight + Math.random() * (cellHeight * 0.5);
+  const left = col * cellWidth + Math.random() * (cellWidth * 0.5);
+  const rotate = Math.random() * 60 - 30;
+
+  return { top, left, rotate };
+};
+
+const Hero = () => {
+  const containerRef = useRef(null);
+
+  const text = "PORTOFOLIO";
+
+  const randomStyles = useMemo(() => {
+    const styles: Style[] = [];
+    const rows = 3;
+    const cols = Math.ceil(text.length / rows);
+    text.split("").forEach((_, index) => {
+      styles.push(generateGridStyle(index, rows, cols));
+    });
+    console.log(text);
+    return styles;
+  }, [text]);
+
+  return (
+    <div
+      className="sm:mb-0 mb-10 h-sm:w-[100vw] w-[100vw] md:w-[87vw] lg:w-[95vw] sm:h-full h-[90vh]  flex justify-content-center items-center sm:pl-16 h-sm:pl-8 pl-8 z-20"
+      style={{ touchAction: "pan-y" }}
+    >
+      <div
+        className="w-full h-full flex flex-col place-content-center relative sm:py-0 py-10"
+        ref={containerRef}
+        style={{ touchAction: "pan-y" }}
+      >
+        <RandomJapaneseText
+          text="Hi, I'm Nanda!"
+          duration={1}
+          useScroll={false}
+          className="sm:text-6xl font-semibold text-[2rem] max-[400px]:text-[1.7rem] text-center text-sky-400  z-10 font-custom place-self-start"
+        />
+
+        <div className="flex gap-2">
+          <h2 className="text-xl sm:text-2xl text-center text-gray-600 place-self-start z-10 font-custom flex">
+            I'm a
+          </h2>
+          <TextTransition></TextTransition>
+        </div>
+        <motion.hr
+          className="border-t-4 rounded-sm border-solid border-sky-400 z-10"
+          initial={{ width: "0%" }}
+          animate={{
+            width: window.innerWidth < 900 ? "85%" : "43%", // Dynamically adjust width
+          }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+        />
+
+        {text.split("").map((char, index) => {
+          return (
+            <motion.div
+              key={index}
+              className="absolute cursor-grab text-white font-black sm:text-[10rem] text-[6rem] h-sm:text-[6rem] z-0 font-custom"
+              style={{
+                top: `${randomStyles[index].top}%`,
+                left: `${randomStyles[index].left}%`,
+                transform: `rotate(${randomStyles[index].rotate}deg)`,
+              }}
+              drag
+              dragConstraints={containerRef}
+              initial={{
+                y: -200, // Start off-screen above
+                opacity: 0,
+                rotate: 0,
+              }}
+              animate={{
+                y: 0, // Fall to the intended position
+                opacity: 1, // Fade in
+                rotate: randomStyles[index].rotate, // Rotate slightly
+              }}
+              transition={{
+                duration: 0.3 + index * 0.2, // Stagger the falling animations slightly
+                ease: "easeOut", // Smooth easing for a falling effect
+              }}
+              whileDrag={{ scale: 1.2 }}
+            >
+              {char}
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default Hero;
