@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import RandomJapaneseText from "../Animations/RandomText";
 import { motion, Variants } from "framer-motion";
 import ScrollableElement from "../Animations/UseSroll";
@@ -143,21 +143,6 @@ function About_Me() {
     },
   };
 
-  const variantChild1 = {
-    open: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1,
-      },
-    },
-    closed: {
-      opacity: 0,
-      y: -50, // Starts above
-      transition: { duration: 0.2 },
-    },
-  };
-
   const variantChild2 = {
     open: {
       opacity: 1,
@@ -169,20 +154,6 @@ function About_Me() {
     closed: {
       opacity: 0,
       y: 50, // Starts below
-      transition: { duration: 0.2 },
-    },
-  };
-  const variantChild3 = {
-    open: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1,
-      },
-    },
-    closed: {
-      opacity: 0,
-      y: -50, // Starts above
       transition: { duration: 0.2 },
     },
   };
