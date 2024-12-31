@@ -13,8 +13,7 @@ function Projects() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null); // Track active dropdown
   const [IsOpen, setIsOpen] = useState(false); // Track active dropdow
   const [activeButton, setActiveButton] = useState<string | null>(null); // Track the active button
-  const [toggleDirection, setToggleDirection] = useState(false); // Track the toggle state of the active button
-
+  const isMobile = window.innerWidth < 1000;
   const variantSearchBar = {
     closed: {
       scale: 1,
@@ -31,8 +30,11 @@ function Projects() {
       x: "0rem",
       y: "-2rem",
       borderRadius: "0.5rem",
-      backgroundColor: "#38BDF8",
-      width: "88vw",
+      backgroundColor: "#1f2937",
+      borderLeft: "2px solid #6b7280",
+      borderBottom: "2px solid #6b7280",
+      borderTop: "2px solid #6b7280",
+      width: isMobile ? "85vw" : "47vw",
       rotate: 0,
       transition: { duration: 1, ease: "easeInOut" },
     },
@@ -68,15 +70,7 @@ function Projects() {
   const handleDropdownClick = (dropdownName: string, buttonId: string) => {
     const isSameDropdown = activeDropdown === dropdownName; // Check if the same dropdown is clicked
     const willOpen = !isSameDropdown || !IsOpen;
-    if (activeButton === buttonId) {
-      // If the same button is clicked again, toggle its direction
-      setToggleDirection((prev) => !prev);
-      setActiveButton(null); // Reset immediately
-    } else {
-      // If a different button is clicked, set it as active and reset toggle
-      setActiveButton(buttonId);
-      setToggleDirection(false);
-    }
+    setActiveButton(activeButton === buttonId ? null : buttonId);
 
     if (activeDropdown !== null) {
       // Jika activeDropdown tidak null, pastikan setActiveDropdown memiliki delay lebih lama
@@ -118,11 +112,11 @@ function Projects() {
 
   return (
     <div
-      className="mt-16 text-white h-full w-full lg:w-[95vw]  flex flex-col items-center justify-end pl-8 lg:pl-0 pr-5 relative gap-20 boder-solid boder-white border-[2px]"
+      className="mt-16 lg:mt-40 text-white h-full w-full lg:w-[95vw] md:w-[90vw] flex flex-col items-center justify-center pl-8 lg:pl-0 pr-5 relative gap-20 "
       id="portofolio"
     >
       <ScrollableElement
-        className={`border-solid border-white border-[5px] relative p-5 flex items-start rounded-lg flex-col w-full lg:w-[50%] ${
+        className={`border-solid border-gray-500 border-[5px] relative p-5 flex items-start rounded-lg flex-col w-full lg:w-[50%] ${
           isSet ? "h-[50vh] " : ""
         } `}
         variants={variantContainer}
@@ -131,20 +125,18 @@ function Projects() {
         <div className="grid grid-cols-3 gap-2">
           <AnimatedButton
             onClick={() => handleDropdownClick("simgd", "button1")}
-            className="bg-white"
-            classNameText="text-black underline"
+            className="bg-gray-800"
+            classNameText="text-slate-400 underline"
             isClick={activeButton === "button1"}
-            isDirections={!toggleDirection}
           >
             SIMGD
           </AnimatedButton>
           <AnimatedButton
-            className="bg-white col-span-2"
-            classNameText="text-black underline"
+            className="bg-gray-800 col-span-2"
+            classNameText="text-slate-500 underline"
             onClick={() => handleDropdownClick("profilesajen", "button2")}
             variants={variantButton}
             isClick={activeButton === "button2"}
-            isDirections={!toggleDirection}
           >
             Profile Desa Sajen
           </AnimatedButton>
@@ -158,7 +150,7 @@ function Projects() {
         </div>
 
         <motion.div
-          className="bg-sky-400 rounded-lg absolute text-gray-200 -top-3 p-3 -right-2"
+          className="bg-gray-800 rounded-lg absolute  -top-3 p-3 -right-2 w-full "
           variants={variantSearchBar}
         >
           {isScrolled ? (
@@ -177,19 +169,16 @@ function Projects() {
         <div className="w-full">
           <DropdownList
             title="1. SIMGD"
-            bg="sky-400"
+            bg="gray-800"
             tops="0"
             isVisible={activeDropdown === "simgd"}
             setOpen={IsOpen}
             fontSize="l"
+            className="border-solid border-gray-500 border-[2px]"
           >
-            <div className="flex flex-col gap-3 text-black p-3">
-              <img
-                src="src\public\simgd.png"
-                alt="SIMGD"
-                className="rounded-lg"
-              />
-              <Divider lineColor="black" lineWidth="100%"></Divider>
+            <div className="flex flex-col gap-3 text-white p-3">
+              <img src="/simgd.png" alt="SIMGD" className="rounded-lg" />
+              <Divider lineColor="white" lineWidth="100%"></Divider>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               <div className="flex justify-between">
                 <a
@@ -197,33 +186,17 @@ function Projects() {
                   href="/"
                 >
                   <span className="font-semibold">Visit Link</span>
-                  <img
-                    src="src\public\arrow.svg"
-                    alt=""
-                    className="w-6 h-6 text-white"
-                  />
+                  <img src="/arrow.svg" alt="" className="w-6 h-6 text-white" />
                 </a>
                 <div className="flex gap-2">
                   <div className="rounded-full bg-black p-2">
-                    <img
-                      src="src\public\Laravel.png"
-                      alt=""
-                      className="w-6 h-6"
-                    />
+                    <img src="/Laravel.png" alt="" className="w-6 h-6" />
                   </div>
                   <div className="rounded-full bg-black p-2">
-                    <img
-                      src="src\public\tailwind.png"
-                      alt=""
-                      className="w-6 h-6"
-                    />
+                    <img src="/tailwind.png" alt="" className="w-6 h-6" />
                   </div>
                   <div className="rounded-full bg-black p-2">
-                    <img
-                      src="src\public\MySQL.png"
-                      alt=""
-                      className="w-6 h-6"
-                    />
+                    <img src="/MySQL.png" alt="" className="w-6 h-6" />
                   </div>
                 </div>
               </div>
@@ -231,19 +204,20 @@ function Projects() {
           </DropdownList>
           <DropdownList
             title="2. PROFILE SAJEN"
-            bg="sky-400"
+            bg="gray-800"
             tops="0"
             isVisible={activeDropdown === "profilesajen"}
             setOpen={IsOpen}
             fontSize="l"
+            className="border-solid border-[2px] border-gray-500"
           >
-            <div className="flex flex-col gap-3 text-black p-3">
+            <div className="flex flex-col    gap-3 text-white p-3 justify-center">
               <img
-                src="src\public\simgd.png"
+                src="/simgd.png"
                 alt="SIMGD"
-                className="rounded-lg"
+                className="rounded-lg lg:w-[30vw] place-self-center"
               />
-              <Divider lineColor="black" lineWidth="100%"></Divider>
+              <Divider lineColor="white" lineWidth="100%"></Divider>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               <div className="flex justify-between">
                 <a
@@ -251,33 +225,17 @@ function Projects() {
                   href="/"
                 >
                   <span className="font-semibold">Visit Link</span>
-                  <img
-                    src="src\public\arrow.svg"
-                    alt=""
-                    className="w-6 h-6 text-white"
-                  />
+                  <img src="/arrow.svg" alt="" className="w-6 h-6 text-white" />
                 </a>
                 <div className="flex gap-2">
                   <div className="rounded-full bg-black p-2">
-                    <img
-                      src="src\public\Laravel.png"
-                      alt=""
-                      className="w-6 h-6"
-                    />
+                    <img src="/Laravel.png" alt="" className="w-6 h-6" />
                   </div>
                   <div className="rounded-full bg-black p-2">
-                    <img
-                      src="src\public\tailwind.png"
-                      alt=""
-                      className="w-6 h-6"
-                    />
+                    <img src="/tailwind.png" alt="" className="w-6 h-6" />
                   </div>
                   <div className="rounded-full bg-black p-2">
-                    <img
-                      src="src\public\MySQL.png"
-                      alt=""
-                      className="w-6 h-6"
-                    />
+                    <img src="/MySQL.png" alt="" className="w-6 h-6" />
                   </div>
                 </div>
               </div>

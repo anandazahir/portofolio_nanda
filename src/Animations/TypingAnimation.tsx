@@ -45,10 +45,10 @@ const TypingAnimation = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="font-mono text-start text-black"
+      className="font-mono text-start text-white"
     >
       {displayText}
-      <span className="border-l-2 border-black pl-1 animate-blink" />
+      <span className="border-l-2 border-white pl-1 animate-blink" />
     </motion.div>
   );
 };

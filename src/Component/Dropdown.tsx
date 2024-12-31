@@ -100,10 +100,10 @@ const DropdownList: React.FC<DropdownProps> = ({
         />
         <button
           onClick={toggleDropdown}
-          className={`absolute top-${tops} right-0 cursor-pointer w-10`}
+          className={`absolute top-${tops} right-0 cursor-pointer w-10 bg-white w-fit rounded-full`}
         >
           <motion.i
-            className="fa-solid fa-circle-chevron-down text-sky-400 fa-xl"
+            className="fa-solid fa-circle-chevron-down text-gray-800 fa-xl"
             variants={iconVariants}
             animate={isOpen ? "open" : "closed"}
             transition={{ duration: 0.3 }}
