@@ -218,7 +218,7 @@ function About_Me() {
 
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-[1fr_auto_1fr] lg:grid-cols-[1fr_auto_1fr_auto_1fr] gap-5 pl-8 pr-5 relative">
         {/* Row 1: Image */}
-        <ScrollableElement className="text-white lg:col-start-1 lg:col-end-2 lg:row-start-1 md:col-start-1 md:col-end-2 md:row-start-1 flex items-center justify-center md:bg-[url('./assets/foto_nanda.JPG')] md:bg-cover md:bg-no-repeat bg-none sm:rounded-lg rounded-[0px]">
+        <ScrollableElement className="text-white lg:col-start-1 lg:col-end-2 lg:row-start-1 md:col-start-1 md:col-end-2 md:row-start-1 flex items-center justify-center md:bg-[url('./public/foto_nanda.JPG')] md:bg-cover md:bg-no-repeat bg-none sm:rounded-lg rounded-[0px]">
           <RandomJapaneseText
             text="Nanda"
             useScroll={true}
@@ -227,7 +227,7 @@ function About_Me() {
           />
           <ScrollableElement className="block sm:hidden">
             <img
-              src="src/assets/Foto_Nanda.JPG"
+              src="src/public/Foto_Nanda.JPG"
               className="rounded-lg md:h-[40vh] md:w-[40vw] lg:h-[40vh] lg:w-[40vw] xl:w-[30vw] xl:h-[60vh] w-[90vw]"
               alt="foto_nanda"
             />

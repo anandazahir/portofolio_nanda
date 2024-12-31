@@ -185,7 +185,7 @@ function Projects() {
           >
             <div className="flex flex-col gap-3 text-black p-3">
               <img
-                src="src\assets\simgd.png"
+                src="src\public\simgd.png"
                 alt="SIMGD"
                 className="rounded-lg"
               />
@@ -198,7 +198,7 @@ function Projects() {
                 >
                   <span className="font-semibold">Visit Link</span>
                   <img
-                    src="src\assets\arrow.svg"
+                    src="src\public\arrow.svg"
                     alt=""
                     className="w-6 h-6 text-white"
                   />
@@ -206,21 +206,21 @@ function Projects() {
                 <div className="flex gap-2">
                   <div className="rounded-full bg-black p-2">
                     <img
-                      src="src\assets\Laravel.png"
+                      src="src\public\Laravel.png"
                       alt=""
                       className="w-6 h-6"
                     />
                   </div>
                   <div className="rounded-full bg-black p-2">
                     <img
-                      src="src\assets\tailwind.png"
+                      src="src\public\tailwind.png"
                       alt=""
                       className="w-6 h-6"
                     />
                   </div>
                   <div className="rounded-full bg-black p-2">
                     <img
-                      src="src\assets\MySQL.png"
+                      src="src\public\MySQL.png"
                       alt=""
                       className="w-6 h-6"
                     />
@@ -239,7 +239,7 @@ function Projects() {
           >
             <div className="flex flex-col gap-3 text-black p-3">
               <img
-                src="src\assets\simgd.png"
+                src="src\public\simgd.png"
                 alt="SIMGD"
                 className="rounded-lg"
               />
@@ -252,7 +252,7 @@ function Projects() {
                 >
                   <span className="font-semibold">Visit Link</span>
                   <img
-                    src="src\assets\arrow.svg"
+                    src="src\public\arrow.svg"
                     alt=""
                     className="w-6 h-6 text-white"
                   />
@@ -260,21 +260,21 @@ function Projects() {
                 <div className="flex gap-2">
                   <div className="rounded-full bg-black p-2">
                     <img
-                      src="src\assets\Laravel.png"
+                      src="src\public\Laravel.png"
                       alt=""
                       className="w-6 h-6"
                     />
                   </div>
                   <div className="rounded-full bg-black p-2">
                     <img
-                      src="src\assets\tailwind.png"
+                      src="src\public\tailwind.png"
                       alt=""
                       className="w-6 h-6"
                     />
                   </div>
                   <div className="rounded-full bg-black p-2">
                     <img
-                      src="src\assets\MySQL.png"
+                      src="src\public\MySQL.png"
                       alt=""
                       className="w-6 h-6"
                     />
