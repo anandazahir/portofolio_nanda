@@ -11,7 +11,6 @@ interface Style {
 
 const generateGridStyle = (
   index: number,
-  total: number,
   rows: number,
   cols: number
 ): Style => {
@@ -47,7 +46,7 @@ const Hero = () => {
     const rows = 3;
     const cols = Math.ceil(text.length / rows);
     text.split("").forEach((_, index) => {
-      styles.push(generateGridStyle(index, text.length, rows, cols));
+      styles.push(generateGridStyle(index, rows, cols));
     });
     console.log(text);
     return styles;
