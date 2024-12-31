@@ -43,7 +43,7 @@ export const AnimatedButton: React.FC<AnimatedButtonProps> = ({
 
       <span
         className={`relative z-10 ${
-          isHovered ? "text-slate-800" : "text-slate-100"
+          isHovered ? "text-slate-800" : "text-white"
         } ${classNameText}`}
       >
         {children}
