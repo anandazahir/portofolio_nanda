@@ -187,4 +187,4 @@ const ProjectItem = [
     },
 
 ]
-export {link, techStack, techStackVariants, variantChild2, variantChild4, lineVariants, lineVariantsX, ExperienceItem}
+export {link, techStack, techStackVariants, variantChild2, variantChild4, lineVariants, lineVariantsX, ExperienceItem, ProjectItem}

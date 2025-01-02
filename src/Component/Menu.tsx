@@ -27,7 +27,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ isOpen, toggle }) => {
       callback();
     }, 300); // Delay untuk memungkinkan animasi selesai
   };
-  const { isDarkMode } = useTheme();
+
   return (
     <AnimatePresence>
       {isOpen && (

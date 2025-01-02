@@ -2,10 +2,8 @@ import DropdownList from "./Dropdown";
 import DividerX from "./Divider-X";
 import { motion } from "framer-motion";
 import { variantChild2 } from "../utils/utils";
-import { useTheme } from "./ThemeContext";
 
 function Education() {
-  const { isDarkMode } = useTheme();
   return (
     <DropdownList
       title="Education"
