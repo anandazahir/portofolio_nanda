@@ -18,7 +18,7 @@ export const BrandAnimation: React.FC<AnimatedButtonProps> = ({
 
   return (
     <motion.a
-      className={`relative p-3 text-white rounded-md cursor-pointer ${className}`}
+      className={`relative p-3 dark:text-white rounded-md cursor-pointer ${className}`}
       onHoverStart={() => {
         setIsHovered(true);
       }}
@@ -41,7 +41,7 @@ export const BrandAnimation: React.FC<AnimatedButtonProps> = ({
         {children}
       </motion.span>
 
-      <span className={`relative z-0 text-white ${classNameText}`}>
+      <span className={`relative z-0 dark:text-white ${classNameText}`}>
         {children}
       </span>
     </motion.a>

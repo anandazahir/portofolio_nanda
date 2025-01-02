@@ -151,4 +151,40 @@ const techStack = [
       transition: { duration: 0.1, ease: "easeIn" },
     },
   };
-export {link, techStack, techStackVariants, variantChild2, variantChild4, lineVariants, lineVariantsX}
+
+  const ExperienceItem = [
+    {
+
+        title: "Internship Network Field Engineer",
+        company: "Jakarta Smart City",
+        durationStart: "January 2023",
+        durationEnd: "February 2023",
+       
+    },
+    {
+        title: "FrontEnd Developer",
+        company: "PT Garbantara Depo",
+        durationStart: "Juny 2023",
+        durationEnd: "Agustus 2024",
+    }
+]
+const ProjectItem = [
+    {
+        title: "simgd",
+        keyword:"simgd",
+        desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien egestas",
+        techStack: ["Laravel.png", "tailwind.png", "MySQL.png"],
+        link: "https://simgd-garbantara.com/",
+        image: "simgd.png",
+    },
+    {
+        title: "zoopedia",
+        keyword:"zoopedia",
+        desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien egestas",
+        techStack: ["React.png", "tailwind.png"],
+        link: "https://simgd-garbantara.com/",
+        image: "ZooPedia.png",
+    },
+
+]
+export {link, techStack, techStackVariants, variantChild2, variantChild4, lineVariants, lineVariantsX, ExperienceItem}

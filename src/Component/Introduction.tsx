@@ -6,11 +6,11 @@ function Introduction() {
     <DropdownList
       title="Introduction"
       setOpen={true}
-      className="p-4 border border-gray-700 flex items-center"
-      bg="gray-800"
+      className="p-4 border dark:bg-gray-800 border-gray-700 flex items-center"
+      bg="gray-500"
       classContainer="lg:col-start-3 lg:col-end-4 lg:row-start-1 md:col-start-3 md:col-end-4 md:row-start-1 row-start-3"
     >
-      <p className="text-white md:text-[20px] lg:text-xl text-center font-helvetica lg:my-10 xl:my-12">
+      <p className="text-white  md:text-[20px] lg:text-xl text-center font-helvetica lg:my-10 xl:my-12">
         Hello, I'm{" "}
         <UnderlineSpan lineHeight="3px">Ananda Muhammad Zahir</UnderlineSpan>{" "}
         commonly called <UnderlineSpan lineHeight="3px">Nanda</UnderlineSpan>,

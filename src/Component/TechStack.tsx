@@ -8,9 +8,9 @@ function TechStack() {
   return (
     <DropdownList
       title="Tech Stack"
-      bg="gray-800"
+      bg="gray-500"
       setOpen={true}
-      className="p-4 border border-gray-700 sm:h-[85%]"
+      className="p-4 border dark:bg-gray-800 border-gray-700 sm:h-[85%]"
       classContainer="lg:col-start-5 lg:col-end-6 lg:row-start-1 md:col-start-1 md:col-end-2 md:row-start-3 h-full row-start-5"
     >
       <div className="relative   sm:h-[100%] h-[60vh]" ref={containerRef}>
@@ -22,7 +22,7 @@ function TechStack() {
             drag
             dragConstraints={containerRef}
             custom={{ index, techStack }}
-            className="w-fit absolute p-3 rounded-md text-white bg-black underline font-helvetica font-base md:text-4xl lg:text-4xl text-5xl cursor-grab"
+            className="w-fit absolute p-3 rounded-md text-black bg-sky-400 underline font-helvetica font-base md:text-4xl lg:text-4xl text-5xl cursor-grab"
           >
             {tech.name}
           </motion.div>

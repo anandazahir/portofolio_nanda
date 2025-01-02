@@ -11,7 +11,7 @@ function Image() {
       />
       <ScrollableElement className="block sm:hidden">
         <img
-          src="src/public/Foto_Nanda.JPG"
+          src="./Foto_Nanda.JPG"
           className="rounded-lg md:h-[40vh] md:w-[40vw] lg:h-[40vh] lg:w-[40vw] xl:w-[30vw] xl:h-[60vh] w-[90vw]"
           alt="foto_nanda"
         />

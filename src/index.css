@@ -1,9 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
   background-color: black;
 }
+
 @font-face {
   font-family: MycustomFont;
   src: url("/MonumentExtended-Regular.otf") format("opentype");

@@ -1,7 +1,7 @@
-import HoverLineThroughText from "../Animations/Linethrough";
 import SwitchTheme from "../Animations/Test";
 import { link } from "../utils/utils";
 import { BrandAnimation } from "../Animations/BrandAnimation";
+import UnderlineSpan from "../Animations/UnderlineSpan";
 
 const Header = () => {
   const isMobile = window.innerWidth < 700 || window.innerHeight < 640;
@@ -20,10 +20,12 @@ const Header = () => {
                   className="list-none cursor-pointer transform rotate-90 origin-center  w-4 whitespace-nowrap"
                 >
                   <a href={item.link}>
-                    <HoverLineThroughText
-                      title={item.title}
-                      className="sm:text-base text-2xl font-semibold text-white font-helvetica"
-                    />
+                    <UnderlineSpan
+                      className="sm:text-base text-2xl font-semibold dark:text-white  font-helvetica"
+                      lineHeight="4px"
+                    >
+                      {item.title}
+                    </UnderlineSpan>
                   </a>
                 </li>
               ))}
@@ -33,10 +35,10 @@ const Header = () => {
                 <SwitchTheme></SwitchTheme>
               </div>
               <a href="https://github.com/anandazahir" target="_blank">
-                <i className="fa-brands fa-github fa-xl text-white hover:text-sky-400"></i>
+                <i className="fa-brands fa-github fa-xl dark:text-white hover:dark:text-sky-400 hover:text-sky-400"></i>
               </a>
-              <a href="https://instagram.com/ananda.zahir" target="_blank">
-                <i className="fa-brands fa-instagram fa-xl text-white hover:text-sky-400"></i>
+              <a href="https://linkedin.com/in/anandazahir" target="_blank">
+                <i className="fa-brands fa-linkedin fa-xl dark:text-white hover:dark:text-sky-400 hover:text-sky-400"></i>
               </a>
             </div>
           </div>

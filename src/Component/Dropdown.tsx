@@ -96,14 +96,14 @@ const DropdownList: React.FC<DropdownProps> = ({
           text={title}
           duration={0.3}
           useScroll={true}
-          className={`text-${fontSize} my-4 font-custom`}
+          className={`text-${fontSize} my-4 font-custom dark:text-white text-black`}
         />
         <button
           onClick={toggleDropdown}
           className={`absolute top-${tops} right-0 cursor-pointer w-10 bg-white w-fit rounded-full`}
         >
           <motion.i
-            className="fa-solid fa-circle-chevron-down text-gray-800 fa-xl"
+            className="fa-solid fa-circle-chevron-down dark:text-gray-800 text-gray-500 fa-xl"
             variants={iconVariants}
             animate={isOpen ? "open" : "closed"}
             transition={{ duration: 0.3 }}
@@ -120,7 +120,7 @@ const DropdownList: React.FC<DropdownProps> = ({
               variants={containerVariants}
               className={`bg-${bg} rounded-lg overflow-hidden w-full  ${className}`}
             >
-              <ScrollableElement className="h-full">
+              <ScrollableElement className="h-full t">
                 {React.Children.map(children, (child) => {
                   if (React.isValidElement<ChildProps>(child)) {
                     return React.cloneElement(child, { isOpen });

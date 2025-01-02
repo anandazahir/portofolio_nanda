@@ -2,13 +2,15 @@ import DropdownList from "./Dropdown";
 import DividerX from "./Divider-X";
 import { motion } from "framer-motion";
 import { variantChild2 } from "../utils/utils";
+import { useTheme } from "./ThemeContext";
 
 function Education() {
+  const { isDarkMode } = useTheme();
   return (
     <DropdownList
       title="Education"
-      className="p-4 border border-gray-700"
-      bg="gray-800"
+      className="p-4 border dark:bg-gray-800 border-gray-700"
+      bg="gray-500"
       classContainer="lg:col-start-1 lg:col-end-2 lg:row-start-3 md:col-start-3 md:col-end-4 md:row-start-3 row-start-7"
     >
       <div className="flex flex-col relative gap-10">

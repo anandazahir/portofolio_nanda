@@ -7,7 +7,7 @@ const RunningText: React.FC = () => {
   const words = Array(100).fill("Thank You");
 
   return (
-    <div className="overflow-hidden bg-white py-3">
+    <div className="overflow-hidden dark:bg-white bg-black py-3">
       <motion.div
         className="whitespace-nowrap flex"
         animate={{
@@ -27,7 +27,7 @@ const RunningText: React.FC = () => {
         {words.map((word, index) => (
           <span
             key={index}
-            className="text-xl font-bold text-blade font-custom mx-3"
+            className="text-xl font-bold text-blade font-custom mx-3 dark:text-black text-white"
           >
             {word}
           </span>

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion, SVGMotionProps } from "framer-motion";
-import HoverLineThroughText from "../Animations/Linethrough";
+
 import { link } from "../utils/utils";
 import SwitchTheme from "../Animations/Test";
+import UnderlineSpan from "../Animations/UnderlineSpan";
+import { useTheme } from "./ThemeContext";
 
 const variantItem = {
   open: { y: 0, opacity: 1 },
@@ -25,6 +27,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ isOpen, toggle }) => {
       callback();
     }, 300); // Delay untuk memungkinkan animasi selesai
   };
+  const { isDarkMode } = useTheme();
   return (
     <AnimatePresence>
       {isOpen && (
@@ -43,10 +46,12 @@ const MenuItem: React.FC<MenuItemProps> = ({ isOpen, toggle }) => {
               onClick={() => handleItemClick(toggle)}
             >
               <a href={item.link}>
-                <HoverLineThroughText
-                  title={item.title}
-                  className="sm:text-base text-2xl font-semibold text-white font-helvetica"
-                />
+                <UnderlineSpan
+                  className="sm:text-base text-2xl font-semibold dark:text-white font-helvetica"
+                  lineHeight="4px"
+                >
+                  {item.title}
+                </UnderlineSpan>
               </a>
             </motion.li>
           ))}
@@ -61,14 +66,14 @@ const MenuItem: React.FC<MenuItemProps> = ({ isOpen, toggle }) => {
               rel="noopener noreferrer"
               className="mx-0"
             >
-              <i className="fa-brands fa-github text-white hover:text-sky-400 text-[3rem]"></i>
+              <i className="fa-brands fa-github dark:text-white hover:text-sky-400 text-[3rem]"></i>
             </a>
             <a
-              href="https://instagram.com/ananda.zahir"
+              href="https://linkedin.com/in/anandazahir"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="fa-brands fa-instagram text-white hover:text-sky-400 text-[3rem]"></i>
+              <i className="fa-brands fa-linkedin dark:text-white hover:text-sky-400 text-[3rem]"></i>
             </a>
           </motion.li>
         </motion.ul>
@@ -79,15 +84,19 @@ const MenuItem: React.FC<MenuItemProps> = ({ isOpen, toggle }) => {
 
 type PathProps = SVGMotionProps<SVGPathElement> & { d?: string };
 
-const Path: React.FC<PathProps> = (props) => (
-  <motion.path
-    fill="transparent"
-    strokeWidth="3"
-    stroke="hsl(0, 0.00%, 98.00%)"
-    strokeLinecap="round"
-    {...props}
-  />
-);
+const Path: React.FC<PathProps> = (props) => {
+  const { isDarkMode } = useTheme(); // Call the useTheme hook at the top level
+
+  return (
+    <motion.path
+      fill="transparent"
+      strokeWidth="3"
+      stroke={isDarkMode ? "hsl(0, 0.00%, 98.00%)" : "hsl(0, 0.00%, 20.00%)"} // Dynamic stroke color
+      strokeLinecap="round"
+      {...props} // Spread any additional props
+    />
+  );
+};
 
 const sidebar = {
   open: {
@@ -116,7 +125,7 @@ const MenuToggle: React.FC<{ toggle: () => void }> = ({ toggle }) => (
   <button
     onClick={toggle}
     aria-label="Toggle Menu"
-    className="absolute top-[10px] right-[0] w-[50px] h-[50px] rounded-full text-white hover:bg-white/20"
+    className={`absolute top-[10px] right-[0] w-[50px] h-[50px] rounded-full text-white dark:hover:bg-white/20 hover:bg-black/20`}
   >
     <svg width="20" height="20" viewBox="0 0 23 23" className="mx-4">
       <Path
@@ -167,7 +176,7 @@ export const Menu: React.FC = () => {
       <AnimatePresence>
         {(isOpen || isAnimating) && (
           <motion.div
-            className="absolute top-0 right-0 w-screen h-screen bg-white/10 backdrop-blur-md"
+            className="absolute top-0 right-0 w-screen h-screen dark:bg-white/10 bg-black/10 backdrop-blur-md"
             variants={sidebar}
             initial="closed"
             animate={isOpen ? "open" : "closed"}

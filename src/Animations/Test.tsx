@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "../Component/ThemeContext"; // Import the useTheme hook
+
 type Props = {
   width?: string;
   height?: string;
@@ -9,11 +11,8 @@ const SwitchTheme: React.FC<Props> = ({
   width = "1.5em",
   height = "1.5em",
 }) => {
-  const [isDay, setIsDay] = useState(true);
-
-  const toggleTheme = () => {
-    setIsDay(!isDay);
-  };
+  // Use the useTheme hook to get isDarkMode and toggleTheme
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const variants = {
     initial: { opacity: 0, scale: 0.8, rotate: 90 },
@@ -24,11 +23,11 @@ const SwitchTheme: React.FC<Props> = ({
   return (
     <div>
       <button
-        onClick={toggleTheme}
-        className="bg-sky-blue rounded-full p-2 hover:bg-white/20"
+        onClick={toggleTheme} // Use toggleTheme from useTheme
+        className="bg-sky-blue rounded-full p-2 dark:hover:bg-white/20 hover:bg-black/20"
       >
         <AnimatePresence mode="wait">
-          {isDay ? (
+          {!isDarkMode ? ( // Use isDarkMode from useTheme
             <motion.div
               key="moon"
               variants={variants}
@@ -46,7 +45,7 @@ const SwitchTheme: React.FC<Props> = ({
               >
                 <path
                   d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z"
-                  stroke="#ffff"
+                  stroke={!isDarkMode ? "#000000" : "#ffffff"} // Black in light mode, white in dark mode
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -63,7 +62,7 @@ const SwitchTheme: React.FC<Props> = ({
               transition={{ duration: 0.5 }}
             >
               <svg
-                fill="#ffff"
+                fill={!isDarkMode ? "#000000" : "#ffffff"} // Black in light mode, white in dark mode
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 47.576 47.576"
                 width={width}

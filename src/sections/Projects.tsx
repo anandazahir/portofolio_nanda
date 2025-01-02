@@ -112,7 +112,7 @@ function Projects() {
 
   return (
     <div
-      className="mt-16 lg:mt-40 text-white h-full w-full lg:w-[95vw] md:w-[90vw] flex flex-col items-center justify-center pl-8 lg:pl-0 pr-5 relative gap-20 "
+      className="mt-40 lg:mt-40 text-white h-full w-full lg:w-[95vw] md:w-[90vw] flex flex-col items-center justify-center pl-8 lg:pl-0 pr-5 relative gap-20 "
       id="portofolio"
     >
       <ScrollableElement
@@ -125,14 +125,14 @@ function Projects() {
         <div className="grid grid-cols-3 gap-2">
           <AnimatedButton
             onClick={() => handleDropdownClick("simgd", "button1")}
-            className="bg-gray-800"
+            className="dark:bg-gray-800 bg-gray-500"
             classNameText="text-slate-400 underline"
             isClick={activeButton === "button1"}
           >
             SIMGD
           </AnimatedButton>
           <AnimatedButton
-            className="bg-gray-800 col-span-2"
+            className="dark:bg-gray-800 bg-gray-500 col-span-2"
             classNameText="text-slate-500 underline"
             onClick={() => handleDropdownClick("profilesajen", "button2")}
             variants={variantButton}
@@ -150,7 +150,7 @@ function Projects() {
         </div>
 
         <motion.div
-          className="bg-gray-800 rounded-lg absolute  -top-3 p-3 -right-2 w-full "
+          className=" rounded-lg absolute  -top-3 p-3 -right-2 w-full "
           variants={variantSearchBar}
         >
           {isScrolled ? (
@@ -168,48 +168,13 @@ function Projects() {
         </motion.div>
         <div className="w-full">
           <DropdownList
-            title="1. SIMGD"
-            bg="gray-800"
-            tops="0"
-            isVisible={activeDropdown === "simgd"}
-            setOpen={IsOpen}
-            fontSize="l"
-            className="border-solid border-gray-500 border-[2px]"
-          >
-            <div className="flex flex-col gap-3 text-white p-3">
-              <img src="/simgd.png" alt="SIMGD" className="rounded-lg" />
-              <Divider lineColor="white" lineWidth="100%"></Divider>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              <div className="flex justify-between">
-                <a
-                  className="bg-black p-2 rounded-lg text-white flex gap-2"
-                  href="/"
-                >
-                  <span className="font-semibold">Visit Link</span>
-                  <img src="/arrow.svg" alt="" className="w-6 h-6 text-white" />
-                </a>
-                <div className="flex gap-2">
-                  <div className="rounded-full bg-black p-2">
-                    <img src="/Laravel.png" alt="" className="w-6 h-6" />
-                  </div>
-                  <div className="rounded-full bg-black p-2">
-                    <img src="/tailwind.png" alt="" className="w-6 h-6" />
-                  </div>
-                  <div className="rounded-full bg-black p-2">
-                    <img src="/MySQL.png" alt="" className="w-6 h-6" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </DropdownList>
-          <DropdownList
             title="2. PROFILE SAJEN"
-            bg="gray-800"
+            bg="gray-500"
             tops="0"
             isVisible={activeDropdown === "profilesajen"}
             setOpen={IsOpen}
             fontSize="l"
-            className="border-solid border-[2px] border-gray-500"
+            className="border-solid dark:bg-gray-800 border-[2px] dark:border-gray-500 border-gray-800"
           >
             <div className="flex flex-col    gap-3 text-white p-3 justify-center">
               <img
@@ -248,7 +213,7 @@ function Projects() {
         <AnimatePresence>
           <ScrollableElement
             variants={variantChild2}
-            className="absolute right-0 bottom-16"
+            className="absolute right-0 -bottom-20 "
           >
             {" "}
             <motion.h1 className="font-custom text-5xl ">PROJECT</motion.h1>

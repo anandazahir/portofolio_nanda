@@ -54,7 +54,7 @@ const Hero = () => {
 
   return (
     <div
-      className="sm:mb-0 mb-10 h-sm:w-[100vw] w-[100vw] md:w-[87vw] lg:w-[95vw] sm:h-full h-[90vh]  flex justify-content-center items-center sm:pl-16 h-sm:pl-8 pl-8 z-20"
+      className="sm:mb-0 mb-10 h-sm:w-[100vw] w-[100vw] md:w-[87vw] lg:w-[95vw]  h-[100vh]  flex justify-content-center items-center sm:pl-16 h-sm:pl-8 pl-8 z-20"
       style={{ touchAction: "pan-y" }}
     >
       <div
@@ -88,7 +88,7 @@ const Hero = () => {
           return (
             <motion.div
               key={index}
-              className="absolute cursor-grab text-white font-black sm:text-[10rem] text-[6rem] h-sm:text-[6rem] z-0 font-custom"
+              className="absolute cursor-grab dark:text-white font-black sm:text-[10rem] text-[6rem] h-sm:text-[6rem] z-0 font-custom"
               style={{
                 top: `${randomStyles[index].top}%`,
                 left: `${randomStyles[index].left}%`,
